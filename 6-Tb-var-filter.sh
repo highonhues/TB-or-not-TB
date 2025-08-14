@@ -2,8 +2,8 @@
 #SBATCH --job-name=tb_filter
 #SBATCH --mem=4G
 #SBATCH --cpus-per-task=1
-#SBATCH --output=/scratch/home/agupta1/TB/logs/tb_filter_%j.out
-#SBATCH --error=/scratch/home/agupta1/TB/logs/tb_filter_%j.err
+#SBATCH --output=/scratch/home/agupta1/TB/logs/tb_filter_%j.output
+#SBATCH --error=/scratch/home/agupta1/TB/logs/tb_filter_%j.error
 
 #=========================#
 # USER CONFIGURATION      #
