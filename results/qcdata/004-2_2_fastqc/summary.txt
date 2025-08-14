@@ -1,0 +1,11 @@
+PASS	Basic Statistics	004-2_2.fastq
+PASS	Per base sequence quality	004-2_2.fastq
+FAIL	Per tile sequence quality	004-2_2.fastq
+PASS	Per sequence quality scores	004-2_2.fastq
+FAIL	Per base sequence content	004-2_2.fastq
+PASS	Per sequence GC content	004-2_2.fastq
+PASS	Per base N content	004-2_2.fastq
+PASS	Sequence Length Distribution	004-2_2.fastq
+PASS	Sequence Duplication Levels	004-2_2.fastq
+PASS	Overrepresented sequences	004-2_2.fastq
+PASS	Adapter Content	004-2_2.fastq
