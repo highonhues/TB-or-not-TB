@@ -19,6 +19,7 @@ OUTDIR="/scratch/home/agupta1/TB/tb-data/cleandata"
 # source /home/agupta1/miniconda3/etc/profile.d/conda.sh
 conda init bash
 source ~/.bashrc
+
 echo "Conda activated. proceeding with fastp..."
 
 
@@ -38,4 +39,5 @@ for R1 in "$DATADIR"/*_1.fastq*; do
         --html "$OUTDIR/${sample}.html"
 done
 
+conda deactivate
 echo "finiished with fastp"

@@ -38,7 +38,7 @@ else
     echo "FastQC failed"
     exit 1
 fi
-
+conda deactivate
 for zip in "$OUTDIR"/*.zip
 do 
 unzip "$zip"

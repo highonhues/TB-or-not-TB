@@ -1,4 +1,4 @@
 # Ignore entire data directories
-
+results/
 logs/
 tb-data/
