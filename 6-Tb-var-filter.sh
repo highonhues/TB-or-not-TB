@@ -4,6 +4,16 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --output=/scratch/home/agupta1/TB/logs/tb_filter_%j.out
 #SBATCH --error=/scratch/home/agupta1/TB/logs/tb_filter_%j.err
+
+#=========================#
+# USER CONFIGURATION      #
+#=========================#
+SNIPPYDIR="/scratch/home/agupta1/TB/results/snippy"
+
+#=========================#
+
+
+
  # Proper conda init
 source /home/agupta1/miniconda3/etc/profile.d/conda.sh
 
@@ -13,7 +23,7 @@ echo "Conda activated. proceeding with tbvar..."
 conda activate tbvar
 
 # Loop over all snps.vcf files from Snippy results
-for VCF_IN in /scratch/home/agupta1/TB/results/snippy/*/snps.vcf; do
+for VCF_IN in "$SNIPPYDIR"/*/snps.vcf; do
     OUTDIR=$(dirname "$VCF_IN")
     VCF_OUT="$OUTDIR/tb_variant_snps.vcf"
 
