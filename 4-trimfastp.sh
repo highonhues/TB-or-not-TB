@@ -33,7 +33,9 @@ for R1 in "$DATADIR"/*_1.fastq*; do
     
     fastp -i "$R1" -o "$OUTDIR/${sample}_1.trimmed.fastq.gz" \
         -I "$R2"   -O "$OUTDIR/${sample}_2.trimmed.fastq.gz" \
-        -w $SLURM_CPUS_PER_TASK
+        -w $SLURM_CPUS_PER_TASK \
+        --json "$OUTDIR/${sample}.json" \
+        --html "$OUTDIR/${sample}.html"
 done
 
 echo "finiished with fastp"
