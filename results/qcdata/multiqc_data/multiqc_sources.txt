@@ -1,3 +1,0 @@
-Module	Section	Sample Name	Source
-FastQC	all_sections	004-2_2	/scratch/home/agupta1/TB/results/qcdata/004-2_2_fastqc/fastqc_data.txt
-FastQC	all_sections	004-2_1	/scratch/home/agupta1/TB/results/qcdata/004-2_1_fastqc/fastqc_data.txt
