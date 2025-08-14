@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=fastqc_multiqc
+#SBATCH --job-name=multiqc
 #SBATCH --mem=8G
 #SBATCH --cpus-per-task=6                  
 #SBATCH --output=/scratch/home/agupta1/TB/logs/multiqc_%j.output
