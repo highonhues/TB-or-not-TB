@@ -1,0 +1,15 @@
+datadir: "tb-data"
+
+
+# The 'name' is how the file is saved locally
+# The 'url' must be a direct download URL (http/https/ftp).
+downloads:
+  - name: "004-2_1.fastq.gz"
+    url: "https://zenodo.org/record/3960260/files/004-2_1.fastq.gz"
+  - name: "004-2_2.fastq.gz"
+    url: "https://zenodo.org/record/3960260/files/004-2_2.fastq.gz"
+  - name: "ancestral_ref.gbk"
+    url: "https://zenodo.org/record/3960260/files/Mycobacterium_tuberculosis_ancestral_reference.gbk"
+  - name: "chromosome.gff3"
+    url: "https://zenodo.org/record/3960260/files/Mycobacterium_tuberculosis_h37rv.ASM19595v2.45.chromosome.Chromosome.gff3"
+#add more if needed

@@ -1,0 +1,3 @@
+2025-08-15 00:16:44	-	hungry_wiles	-	c03bc86a619ff9f5d91fdea980ed269a	19a417ba-ace9-456a-b9c4-30dc25878c39	nextflow run main.nf -params-file params.yml
+2025-08-15 00:18:30	-	compassionate_cuvier	-	c03bc86a619ff9f5d91fdea980ed269a	f7745c57-ff9a-4f9b-a67b-85aec2ab79dc	nextflow run main.nf -params-file params.yml
+2025-08-15 00:25:00	2m 17s	maniac_meninsky	ERR	fafbec51fd57c567bc34e4c9b929f8d4	ef6589d7-7e8c-414e-9114-8e8826b205c5	nextflow run main.nf -params-file params.yml
