@@ -7,10 +7,18 @@
 
 // Process modules
 include { GET_WGS } from './modules/getwgs.nf'
+include { Fastqc } from './modules/fastqc.nf'
+
 
 // workflow definition
 workflow{
     // get data files
-    download_files=GET_WGS()
-    download_files.view { file -> "Downloaded: ${file}" }
+    downloaded_files=GET_WGS()
+    //download_files.view { file -> "Downloaded: ${file}" }
+
+    //run Fastqc
+    fastq_files = downloaded_files.filter { it.name.endsWith(".fastq.gz") }
+    Fastqc(fastq_files)
+    
+
 }

@@ -1,4 +1,7 @@
+#!/usr/bin/env nextflow
+
 process GET_WGS {
+
     // outputs saved to the defined datadir
     publishDir "${params.datadir}", mode: 'copy'
     conda 'conda-forge::wget=1.21.4'
