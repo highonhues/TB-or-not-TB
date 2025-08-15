@@ -1,5 +1,9 @@
 datadir: "tb-data"
-
+outdir: "results"
+qcdir: "results/qcdata"
+cleandir: "tb-data/cleandata"
+snippydir: "results/snippy"
+profilerdir: "results/tbprofiler"
 
 # The 'name' is how the file is saved locally
 # The 'url' must be a direct download URL (http/https/ftp).

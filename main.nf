@@ -10,6 +10,8 @@ include { GET_WGS } from './modules/getwgs.nf'
 include { Fastqc } from './modules/fastqc.nf'
 include { Multiqc } from './modules/multiqc.nf'
 include { Fastp } from './modules/fastp.nf'
+include { Snippy } from './modules/snippy.nf'
+include { TBFilter } from './modules/tb_filter.nf'
 
 // workflow definition
 workflow{
@@ -30,6 +32,33 @@ workflow{
         .map { id, reads -> tuple(reads.find { it.name.contains("_1") }, reads.find { it.name.contains("_2") }) }
 
     Fastp(paired_reads)
+
+    trimmed_reads = Fastp(paired_reads)
+
+    // Run FastQC on trimmed reads
+    fastqc_trimmed = Fastqc(trimmed_reads.flatten())
+
+    // Final MultiQC combining raw + trimmed QC results
+    params.qcdir = "results/qcdata/trimmed"
+    Multiqc(fastqc_trimmed.collect())
+    final_qc_inputs = fastqc_raw.concat(fastqc_trimmed).collect()
+    params.qcdir = "results/qcdata/final"
+    Multiqc(final_qc_inputs)
+
+    //snippy
+    snippy_results = Snippy(trimmed_reads)
+
+    // tb variant filter-takes vcf from snippy
+    tbfilter_results = TBFilter(snippy_results.map { id, files -> tuple(id, files.find { it.name == "snps.vcf" })})
+
+    // Step 8: TB Profiler (takes BAM + VCF.GZ from Snippy)
+    tbprofiler_results = TBProfiler(snippy_results.map { id, files ->
+        tuple(id,
+              files.find { it.name == "snps.bam" },
+             files.find { it.name == "targets.vcf.gz" }
+        )
+    })
+
 
 
 }
