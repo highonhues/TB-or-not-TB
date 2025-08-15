@@ -9,6 +9,7 @@
 include { GET_WGS } from './modules/getwgs.nf'
 include { Fastqc } from './modules/fastqc.nf'
 include { Multiqc } from './modules/multiqc.nf'
+include { Fastp } from './modules/fastp.nf'
 
 // workflow definition
 workflow{
@@ -21,7 +22,14 @@ workflow{
     fastqc_results = Fastqc(fastq_files)
 
     // multiqc
-    Multiqc(params.qcdir)
-    
+    Multiqc(fastqc_results.collect())
+
+    //fastp trimming
+    paired_reads = raw_fastq
+        .groupTuple { file -> file.name.replaceAll(/_1\.fastq\.gz|_2\.fastq\.gz/, '') }
+        .map { id, reads -> tuple(reads.find { it.name.contains("_1") }, reads.find { it.name.contains("_2") }) }
+
+    Fastp(paired_reads)
+
 
 }

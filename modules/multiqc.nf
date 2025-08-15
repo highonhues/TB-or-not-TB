@@ -1,17 +1,18 @@
 #!/usr/bin/env nextflow
 
 /*
- * run multiqc on output files
+ * run MultiQC on all FastQC outputs
  */
 process Multiqc {
 
-    conda 'bioconda::multiqc=1.21'
-    
+
+    conda 'bioconda::multiqc=1.6'
+
 
     publishDir "${params.qcdir}", mode: 'copy'
 
     input:
-        path qc_results_dir
+        path fastqc_results
 
     output:
         path "multiqc_report.html"
@@ -19,7 +20,7 @@ process Multiqc {
 
     script:
     """
-    echo "Running MultiQC on \$qc_results_dir..."
-    multiqc \$qc_results_dir
+    echo "Running MultiQC on FastQC outputs..."
+    multiqc .
     """
 }
