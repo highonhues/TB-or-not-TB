@@ -1,7 +1,7 @@
 # TB-or-not-TB
 
 This pipeline automates **whole-genome sequencing (WGS) analysis of *Mycobacterium tuberculosis***.  
-It performs quality control, read trimming, variant calling, variant filtering, and antibiotic resistance profiling using a Nextflow and Conda.  
+It performs quality control, read trimming, variant calling, variant filtering, and antibiotic resistance profiling using a Nextflow and Conda. (wip) 
 
 
 
@@ -24,8 +24,8 @@ It performs quality control, read trimming, variant calling, variant filtering, 
 
 
 
-## Test case (provided in `params.yml`)  
-The repo includes a small public dataset that will be downloaded automatically:  
+## Test case 
+The repo includes a small public dataset provided in `params.yml` that will be downloaded with the getwgs module:  
 
 - `004-2_1.fastq.gz`  
 - `004-2_2.fastq.gz`  
@@ -50,5 +50,11 @@ Update `params.yml` accordingly.
 curl -s https://get.nextflow.io | bash
 ```
 
-2. 
-
+2. **Clone**
+```bash
+git clone https://github.com/highonhues/TB-or-not-TB.git
+```
+3. **Run test case or update params.yml**  
+```bash
+nextflow run main.nf
+```
