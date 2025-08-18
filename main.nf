@@ -12,7 +12,7 @@ include { Multiqc } from './modules/multiqc.nf'
 include { Fastp } from './modules/fastp.nf'
 include { Snippy } from './modules/snippy.nf'
 include { TBFilter } from './modules/tb_filter.nf'
-
+include { TBProfiler }  from './modules/tb_profiler.nf'
 // workflow definition
 workflow{
     // get data files
@@ -27,11 +27,10 @@ workflow{
     Multiqc(fastqc_results.collect())
 
     //fastp trimming
-    paired_reads = raw_fastq
+    paired_reads = fastq_files
         .groupTuple { file -> file.name.replaceAll(/_1\.fastq\.gz|_2\.fastq\.gz/, '') }
         .map { id, reads -> tuple(reads.find { it.name.contains("_1") }, reads.find { it.name.contains("_2") }) }
 
-    Fastp(paired_reads)
 
     trimmed_reads = Fastp(paired_reads)
 
@@ -41,7 +40,7 @@ workflow{
     // Final MultiQC combining raw + trimmed QC results
     params.qcdir = "results/qcdata/trimmed"
     Multiqc(fastqc_trimmed.collect())
-    final_qc_inputs = fastqc_raw.concat(fastqc_trimmed).collect()
+    final_qc_inputs = fastqc_results.concat(fastqc_trimmed).collect()
     params.qcdir = "results/qcdata/final"
     Multiqc(final_qc_inputs)
 
