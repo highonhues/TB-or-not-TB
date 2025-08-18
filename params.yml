@@ -1,5 +1,4 @@
 datadir: "tb-data"
-outdir: "results"
 qcdir: "results/qcdata"
 cleandir: "tb-data/cleandata"
 snippydir: "results/snippy"
