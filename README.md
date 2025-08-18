@@ -1,18 +1,17 @@
 # TB-or-not-TB
 
- 
 This pipeline automates **whole-genome sequencing (WGS) analysis of *Mycobacterium tuberculosis***.  
-It performs quality control, read trimming, variant calling, variant filtering, and antibiotic resistance profiling in a reproducible way using Nextflow and Conda.  
+It performs quality control, read trimming, variant calling, variant filtering, and antibiotic resistance profiling using a Nextflow and Conda.  
 
----
+
 
 ## Input format
 - Paired-end FASTQ files (`*_1.fastq.gz`, `*_2.fastq.gz`)  
 - Reference genome in **GenBank** format (`.gbk`)  
 
----
 
-## Output format?  
+
+## Output format
 - **QC Reports:** FastQC (`.html`, `.zip`) and MultiQC (`multiqc_report.html`)  
 - **Trimmed reads:** `*_1.trimmed.fastq.gz`, `*_2.trimmed.fastq.gz`  
 - **Snippy outputs:** `snps.vcf`, `snps.bam`, other variant calling files  
@@ -23,9 +22,9 @@ It performs quality control, read trimming, variant calling, variant filtering, 
   - `<sample>.report.html` (final drug resistance report)  
 - **Reference FASTA:** converted from `.gbk` using `seqret`  
 
----
 
-est case (provided in `params.yml`)  
+
+## Test case (provided in `params.yml`)  
 The repo includes a small public dataset that will be downloaded automatically:  
 
 - `004-2_1.fastq.gz`  
