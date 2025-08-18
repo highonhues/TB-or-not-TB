@@ -13,11 +13,16 @@ include { Fastp } from './modules/fastp.nf'
 include { Snippy } from './modules/snippy.nf'
 include { TBFilter } from './modules/tb_filter.nf'
 include { TBProfiler }  from './modules/tb_profiler.nf'
+include { Seqret} from './modules/seqret.nf'
 // workflow definition
 workflow{
     // get data files
     downloaded_files = GET_WGS()
     //download_files.view { file -> "Downloaded: ${file}" }
+
+    //convert ref to fasta
+    ref_gbk = downloaded_files.filter { it.name.endsWith(".gbk") }
+    seqret_fasta = Seqret(ref_gbk)
 
     //run Fastqc
     fastq_files = downloaded_files.filter { it.name.endsWith(".fastq.gz") }
